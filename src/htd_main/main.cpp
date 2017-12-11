@@ -32,6 +32,12 @@
 #include <iomanip>
 #include <iostream>
 
+//added by kreshnik
+#include <htd/GraphImporter.hpp>
+
+
+
+
 htd::LibraryInstance * const libraryInstance = htd::createManagementInstance(htd::Id::FIRST);
 
 htd_cli::OptionManager * createOptionManager(void)
@@ -587,6 +593,16 @@ void handleSignal(int signal)
 
 int main(int argc, const char * const * const argv)
 {
+
+    std::cout<<"Testing start";
+    htd::MultiHypergraph a = new htd::MultiHypergraph(); 
+    htd::GraphImporter gr = new htd::GraphImporter();
+    
+    gr->computeDecomposition(& a);
+    
+    std::cout<<"Testing end";
+    
+    
     int ret = 0;
 
     bool error = false;
@@ -1011,4 +1027,5 @@ int main(int argc, const char * const * const argv)
     }
 
     return ret;
+     
 }
